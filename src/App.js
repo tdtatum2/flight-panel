@@ -1,53 +1,33 @@
-import React from 'react';
-import { Tab, Nav, Container, Row, Col } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Tab, Nav, Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import './App.scss';
+import InstructorShowcaseMobile from './components/InstructorShowcaseMobile';
+import InstructorShowcaseDesktop from './components/InstructorShowcaseDesktop';
 
  const instructorsGroup = [
-  {name: 'Noi', age: '40', hand: 'Right', bio:'Noi bio'},
-  {name: 'Fin', age: '25', hand: 'Left', bio:'Fin bio'},
-  {name: 'Lock', age: '42', hand: 'Right', bio:'Lock bio'},
-  {name: 'Jen', age: '30', hand: 'Left', bio:'Jen bio'},
-  {name: 'Matt', age: '30', hand: 'Right', bio:'Matt bio'},
-  {name: 'David', age: '21', hand: 'Right', bio:'David bio'},
-  {name: 'Cody', age: '40', hand: 'Left', bio:'Cody bio'},
-  {name: 'Nate', age: '35', hand: 'Right', bio:'Nate bio'}
+  {name: 'Noi', age: '40', hand: 'Right', bio:'Noi bio', cardImage1: process.env.PUBLIC_URL + '/assets/Noi1.png', cardImage2: process.env.PUBLIC_URL + '/assets/Noi2.png'},
+  {name: 'Fin', age: '25', hand: 'Left', bio:'Fin bio', cardImage1: process.env.PUBLIC_URL + '/assets/Fin1.png', cardImage2: process.env.PUBLIC_URL + '/assets/Fin2.png'},
+  {name: 'Lock', age: '42', hand: 'Right', bio:'Lock bio', cardImage1: process.env.PUBLIC_URL + '/assets/Lock1.png', cardImage2: process.env.PUBLIC_URL + '/assets/Lock2.png'},
+  {name: 'Jen', age: '30', hand: 'Left', bio:'Jen bio', cardImage1: process.env.PUBLIC_URL + '/assets/Jen1.png', cardImage2: process.env.PUBLIC_URL + '/assets/Jen2.png'},
+  {name: 'Matt', age: '30', hand: 'Right', bio:'Matt bio', cardImage1: process.env.PUBLIC_URL + '/assets/Matt1.png', cardImage2: process.env.PUBLIC_URL + '/assets/Matt2.png'},
+  {name: 'David', age: '21', hand: 'Right', bio:'David bio', cardImage1: process.env.PUBLIC_URL + '/assets/David1.png', cardImage2: process.env.PUBLIC_URL + '/assets/David2.png'},
 ];
 
-function InstructorShowcaseMobile({ instructorGroup }) {
-  return (
-    <div className="m-instructors-showcase">
-      {instructorsGroup.map((instructor) => (
-        <div className="m-instructor-card">
-          <Row>
-            <Col>
-              <h4 className="instructor-name">{instructor.name}</h4>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p className="instructor-age">{instructor.age}</p>
-            </Col>
-            <Col>
-              <p className="instructor-hand">{instructor.hand}-Handed</p>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <p className="instructor-bio">
-                {instructor.bio}
-              </p>
-            </Col>
-          </Row>
-        </div>
-      ))}
-    </div>
-    
 
-      );
-    }
  
 function App() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <Container fluid className="p-0">
       <Tab.Container defaultActiveKey="instructors" className="tab-container-whole">
@@ -66,11 +46,10 @@ function App() {
         <Tab.Content className="p-4">
           <Tab.Pane eventKey="instructors">
             <h3 className='m-tab-content-heading'>Meet Our Elite Team of Pickleball Pros</h3>
-            <div className="m-instructor-carousel-container">
-              <InstructorShowcaseMobile
-                instructorGroup={instructorsGroup}
-              />
-            </div>
+            { isMobile ? <InstructorShowcaseMobile
+              instructorGroup={instructorsGroup}
+            /> : <InstructorShowcaseDesktop
+              instructorGroup={instructorsGroup} /> }
           </Tab.Pane>
           <Tab.Pane eventKey="leagues">
             <h3>Leagues</h3>

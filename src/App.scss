@@ -1,0 +1,101 @@
+@media (max-width: 992px) {
+  /* Main Container */
+  .container-fluid {
+    background-color: #000;
+    margin: 0;
+  }
+
+  /* Navigation Tabs */
+  .nav-tabs {
+    border: none;
+    align-items: center;
+  }
+
+  /* Individual Navigation Tabs (a tag inside)*/
+  .nav-tabs .nav-item {
+    height: 5rem;
+  }
+
+  /* Active Navigation Tab */
+  .nav-tabs .nav-item .active {
+    background-color: #ffcd00;
+    border: none;
+  }
+
+  .nav-tabs .nav-item a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 1.25rem;
+    height: 100%;
+    align-content: center;
+  }
+
+  /* Tab Content (div > h3 > p) */
+  .tab-content {
+    background-color: #ffcd00;
+    text-align: center;
+  }
+
+  /* Instructors Carousel */
+  .m-tab-content-heading {
+    margin: 2rem 2rem 4rem 2rem;
+    font-weight: bold;
+    font-size: 2rem;
+  }
+
+  .m-instructor-carousel-container {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 2rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    width: 100%;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    background-color: transparent;
+  }
+
+  .m-carousel-scroll-item {
+    min-width: 50vw;
+    aspect-ratio: 281/409;
+    flex: 0 0 auto;
+    position: relative;
+    overflow: hidden;
+   
+    &::after, &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    &::after {
+      background-image: var(--active-bg);
+    }
+
+    &::before {
+      background-image: var(--default-bg);
+    }
+
+    &::before, &.active::after {
+      opacity: 1;
+    }
+
+    &::after, &.active::before {
+      opacity: 0;
+    }
+
+
+  }
+}
