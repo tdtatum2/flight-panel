@@ -1,101 +1,135 @@
-@media (max-width: 992px) {
-  /* Main Container */
-  .container-fluid {
-    background-color: #000;
-    margin: 0;
+// RESPONSIVELY RENDER COMPONENTS BASED ON SCREEN SIZE
+@media (max-width: 768px) {
+  .mobile-layout {display: block;}
+  .desktop-layout {display: none;}
+}
+
+@media (min-width: 769px) {
+  .mobile-layout {display: none;}
+  .desktop-layout {display: block;}
+}
+
+
+/* Main Container */
+.container-fluid {
+  background-color: #000;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  border: none;
+  align-items: center;
+}
+
+/* Individual Navigation Tabs (a tag inside)*/
+.nav-tabs .nav-item {
+  height: 5rem;
+}
+
+/* Active Navigation Tab */
+.nav-tabs .nav-item .active {
+  background-color: #ffcd00;
+  border: none;
+}
+
+.nav-tabs .nav-item a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+  font-size: 1.25rem;
+  height: 100%;
+  align-content: center;
+}
+
+/* Tab Content (div > h3 > p) */
+.tab-content {
+  background-color: #ffcd00;
+  text-align: center;
+}
+
+/* Instructors Carousel */
+.m-tab-content-heading {
+  margin: 2rem 2rem 4rem 2rem;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.m-instructor-carousel-container {
+  background-color: transparent;
+}
+
+.m-instructor-slide {
+  margin: 0rem;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  width: 100%;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  background-color: transparent;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.m-carousel-scroll-item {
+  min-width: 45vw;
+  aspect-ratio: 281/409;
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+  
+  &::after, &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    pointer-events: none;
+    z-index: 1;
   }
 
-  /* Navigation Tabs */
-  .nav-tabs {
-    border: none;
-    align-items: center;
+  &::after {
+    background-image: var(--active-bg);
   }
 
-  /* Individual Navigation Tabs (a tag inside)*/
-  .nav-tabs .nav-item {
-    height: 5rem;
+  &::before {
+    background-image: var(--default-bg);
   }
 
-  /* Active Navigation Tab */
-  .nav-tabs .nav-item .active {
-    background-color: #ffcd00;
-    border: none;
+  &::before, &.active::after {
+    opacity: 1;
   }
 
-  .nav-tabs .nav-item a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 900;
-    font-size: 1.25rem;
-    height: 100%;
-    align-content: center;
+  &::after, &.active::before {
+    opacity: 0;
   }
 
-  /* Tab Content (div > h3 > p) */
-  .tab-content {
-    background-color: #ffcd00;
-    text-align: center;
+
+}
+
+.m-nav-buttons {
+  button, button:active, button:hover {
+    margin: 0 1rem;
+    border: 1px solid #000;
+    background-color: #fff;
   }
+}
 
-  /* Instructors Carousel */
-  .m-tab-content-heading {
-    margin: 2rem 2rem 4rem 2rem;
-    font-weight: bold;
-    font-size: 2rem;
-  }
-
-  .m-instructor-carousel-container {
-    margin: 2rem;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    gap: 2rem;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    width: 100%;
-    ::-webkit-scrollbar {
-      display: none;
-    }
-    background-color: transparent;
-  }
-
-  .m-carousel-scroll-item {
-    min-width: 50vw;
-    aspect-ratio: 281/409;
-    flex: 0 0 auto;
-    position: relative;
-    overflow: hidden;
-   
-    &::after, &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-size: contain;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    &::after {
-      background-image: var(--active-bg);
-    }
-
-    &::before {
-      background-image: var(--default-bg);
-    }
-
-    &::before, &.active::after {
-      opacity: 1;
-    }
-
-    &::after, &.active::before {
-      opacity: 0;
-    }
-
-
-  }
+.m-instructor-info-tray {
+  background-color: rgba(0,0,0,0.5);
+  width: 100%;
 }
