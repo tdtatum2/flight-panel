@@ -56,6 +56,7 @@ function InstructorShowcaseMobile({ instructorGroup }) {
               <div className='m-instructor-info-tray'>
                 <h3>{instructor.name}</h3>
                 <h5>{instructor.title}</h5>
+                <h6>{instructor.quote}</h6>
                 <p>{instructor.bio}</p>
               </div>
             </div>

@@ -9,7 +9,6 @@
   .desktop-layout {display: block;}
 }
 
-
 /* Main Container */
 .container-fluid {
   background-color: #000;
@@ -63,7 +62,7 @@
 .m-instructor-slide {
   margin: 0rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: stretch;
   justify-items: center;
   flex-wrap: nowrap;
