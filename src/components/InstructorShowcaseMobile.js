@@ -58,6 +58,7 @@ function InstructorShowcaseMobile({ instructorGroup }) {
                 <h5>{instructor.title}</h5>
                 <h6>{instructor.quote}</h6>
                 <p>{instructor.bio}</p>
+                <p><strong>{instructor.booking}</strong></p>
               </div>
             </div>
         )
