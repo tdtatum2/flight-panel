@@ -20,29 +20,6 @@ function InstructorShowcaseMobile({ instructorGroup }) {
     trackMouse: true
   });
 
-  const instructor = instructorGroup[activeIndex];
-
-
-  // const handleScroll = () => {
-  //   const container = containerRef.current;
-  //   const children = Array.from(container.children);
-  //   const containerCenter = container.scrollLeft + container.offsetWidth / 2;
-
-  //   let closestIndex = 0;
-  //   let closestDistance = Infinity;
-
-  //   children.forEach((child, index) => {
-  //     const childCenter = child.offsetLeft + child.offsetWidth / 2;
-  //     const distance = Math.abs(containerCenter - childCenter);
-  //     if (distance < closestDistance) {
-  //       closestDistance = distance;
-  //       closestIndex = index;
-  //     }
-  //   });
-
-  //   setActiveIndex(closestIndex)
-  // };
-
   return (
     <Container fluid className="m-instructor-carousel-container" {...swipeHandlers}>
       <div className="m-instructor-wrapper">
@@ -56,9 +33,11 @@ function InstructorShowcaseMobile({ instructorGroup }) {
               <div className='m-instructor-info-tray'>
                 <h3>{instructor.name}</h3>
                 <h5>{instructor.title}</h5>
-                <h6>{instructor.quote}</h6>
+                <h6><strong><em>{instructor.quote}</em></strong></h6>
                 <p>{instructor.bio}</p>
-                <p><strong>{instructor.booking}</strong></p>
+                <span><strong>{instructor.booking}</strong></span>
+                <br></br>
+                <Button variant='dark' className='m-booking-button' target='_blank' href={instructor.bookingLink}>Book with {instructor.shortName}</Button>
               </div>
             </div>
         )

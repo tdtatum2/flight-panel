@@ -50,9 +50,9 @@
 
 /* Instructors Carousel */
 .m-tab-content-heading {
-  margin: 2rem 2rem 4rem 2rem;
-  font-weight: bold;
-  font-size: 2rem;
+  margin: 2rem;
+  font-weight: 900;
+  font-size: 1.75rem;
 }
 
 .m-instructor-carousel-container {
@@ -60,7 +60,7 @@
 }
 
 .m-instructor-slide {
-  margin: 0rem;
+  margin: 0rem auto 0rem auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -71,7 +71,7 @@
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  width: 100%;
+  width: 90%;
   ::-webkit-scrollbar {
     display: none;
   }
@@ -82,12 +82,12 @@
 }
 
 .m-carousel-scroll-item {
-  min-width: 45vw;
   aspect-ratio: 281/409;
   flex: 0 0 auto;
   position: relative;
   overflow: hidden;
-  
+  // margin-bottom: -2rem;
+
   &::after, &::before {
     content: '';
     position: absolute;
@@ -122,13 +122,39 @@
 
 .m-nav-buttons {
   button, button:active, button:hover {
-    margin: 0 1rem;
+    margin: 1rem 1rem 0 1rem;
     border: 1px solid #000;
     background-color: #fff;
   }
 }
 
 .m-instructor-info-tray {
-  background-color: rgba(0,0,0,0.5);
   width: 100%;
+
+  // Name
+  h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0;
+    padding: 0;
+  }
+
+  // Title
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  // Quote
+  h6 {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .m-booking-button {
+    margin-top: 1rem;
+    background-color: #000;
+    font-weight: 600;
+    width: 100%;
+  }
 }
