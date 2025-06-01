@@ -1,7 +1,7 @@
 {
   "name": "showcase",
   "version": "0.1.0",
-  "homepage": "https://tdtatum2.github.io/Showcase",
+  "homepage": "https://tdtatum2.github.io/flight-panel",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
