@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/flight-panels/static/css/main.939d1608.css",
+    "main.js": "/flight-panels/static/js/main.3ca39102.js",
+    "index.html": "/flight-panels/index.html",
+    "main.939d1608.css.map": "/flight-panels/static/css/main.939d1608.css.map",
+    "main.3ca39102.js.map": "/flight-panels/static/js/main.3ca39102.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.939d1608.css",
+    "static/js/main.3ca39102.js"
+  ]
+}
