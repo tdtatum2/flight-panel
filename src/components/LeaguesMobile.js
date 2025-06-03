@@ -199,9 +199,9 @@ const LeaguesMobile = () => {
                             </div>
                             <div className="accordion-custom-toggle">
                                 {activeKey === league.key ? (
-                                    <FaChevronCircleUp className='m-accordion-custom-button' />
+                                    <FaChevronCircleUp className='m-accordion-custom-button' style={{ width: '1.5rem', height: 'auto' }}/>
                                 ) : (
-                                    <FaChevronCircleDown className='m-accordion-custom-button' />
+                                    <FaChevronCircleDown className='m-accordion-custom-button' style={{ width: '1.5rem', height: 'auto' }} />
                                 )}
                             </div>
                         </AccordionHeader>
@@ -222,15 +222,16 @@ const LeaguesMobile = () => {
                                         <Table variant='dark' striped>
                                             <thead>
                                                 <tr>
-                                                    <th colSpan={2}>Members</th>
+                                                    <th>Members</th>
                                                     <th>Team Name</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 {league.roster.map((team, index) => (
                                                     <tr key={index}>
-                                                        <td className="m-league-roster-player-name">{team[0]}</td>
-                                                        <td className="m-league-roster-player-name">{team[1]}</td>
+                                                        <td className="m-league-roster-player-name">
+                                                            {team[0]}<br></br>{team[1]} 
+                                                            </td>
                                                         <td className="m-league-roster-team-name">{team[2]}</td>
                                                     </tr>
                                                 ))}
