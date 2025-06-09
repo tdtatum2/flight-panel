@@ -20,6 +20,15 @@ function InstructorShowcaseMobile({ instructorGroup }) {
     trackMouse: true
   });
 
+  useEffect(() => {
+    const sendHeight = () => {
+      const height = document.documentElement.scrollHeight;
+      window.parent.postMessage({ type: 'setHeight', height }, '*');
+    };
+
+    sendHeight();
+  }, []);
+
   return (
     <Container fluid className="m-instructor-carousel-container" {...swipeHandlers}>
       <div className="m-instructor-wrapper">
