@@ -127,6 +127,11 @@ const LeaguesMobile = () => {
         return results.data;
     }
 
+    // useEffect(() => {
+    //     console.log(advMens);
+        
+    // }, [advMens]);
+
     return (
         <div className='m-league-container'>
             <Accordion activeKey={activeKey} onSelect={(key) => setActiveKey(key)} flush>
@@ -243,29 +248,74 @@ const LeaguesMobile = () => {
                                     <Table variant='dark' striped>
                                         
                                         <tbody>
-                                            {league.schedule.map((week, index) => (
+                                            {league.schedule.map((week, index) => {
+                                                const isLast = index === league.schedule.length - 1;
+                                                if (isLast) {
+                                                    return(
+                                                        <React.Fragment key={index}>
+                                                            <tr className='m-league-table-headers'>
+                                                                <td colSpan={2}>{week[0]}</td>
+                                                            </tr>
+                                                        </React.Fragment>
+                                                    )
+                                                }
+                                                return (
                                                 <React.Fragment key={index}>
-                                                    <tr>
+                                                    
+                                                    <tr className='m-league-table-headers'>
                                                         <td colSpan={2}>{week[0]}</td>
                                                     </tr>
                                                     <tr>
+                                                        <td>{week[1]}</td>
+                                                        <td>{week[7]}</td>
+                                                    </tr>
+                                                    <tr>
                                                         <td>
-                                                            {week[1]}
-                                                            <br/>
-                                                            vs
-                                                            <br/>
-                                                            {week[2]}
+                                                            {week[2]}<br></br>vs<br></br>{week[3]}
                                                         </td>
                                                         <td>
-                                                            {week[4]}
-                                                            <br/>
-                                                            vs
-                                                            <br/>
-                                                            {week[3]}
+                                                            {week[8]}<br></br>vs<br></br>{week[9]}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{week[13]}</td>
+                                                        <td>{week[19]}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {week[14]}<br></br>vs<br></br>{week[15]}
+                                                        </td>
+                                                        <td>
+                                                            {week[20]}<br></br>vs<br></br>{week[21]}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{week[4]}</td>
+                                                        <td>{week[10]}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {week[5]}<br></br>vs<br></br>{week[6]}
+                                                        </td>
+                                                        <td>
+                                                            {week[11]}<br></br>vs<br></br>{week[12]}
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>{week[16]}</td>
+                                                        <td>{week[22]}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            {week[17]}<br></br>vs<br></br>{week[18]}
+                                                        </td>
+                                                        <td>
+                                                            {week[23]}<br></br>vs<br></br>{week[24]}
                                                         </td>
                                                     </tr>
                                                 </React.Fragment>
-                                            ))}
+                                            );
+                                        })}
                                         </tbody>
                                         
                                     </Table>
