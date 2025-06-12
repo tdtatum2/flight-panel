@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.scss';
 import InstructorShowcaseMobile from './components/InstructorShowcaseMobile';
 import InstructorShowcaseDesktop from './components/InstructorShowcaseDesktop';
-import LeaguesMobile from './components/LeaguesMobile';
 
  const instructorsGroup = [
   {
@@ -80,41 +79,17 @@ import LeaguesMobile from './components/LeaguesMobile';
 function App() {
   return (
     <Container fluid className="p-0">
-      <Tab.Container defaultActiveKey="instructors" className="tab-container-whole">
-        <Nav variant="tabs" className="d-flex justify-content-between">
-          <Nav.Item className="flex-fill text-center">
-            <Nav.Link eventKey="instructors">Instructors</Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="flex-fill text-center">
-            <Nav.Link eventKey="leagues">Leagues</Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="flex-fill text-center">
-            <Nav.Link eventKey="programs">Programs</Nav.Link>
-          </Nav.Item>
-        </Nav>
-
-        <Tab.Content className="p-4">
-          <Tab.Pane eventKey="instructors">
-            <h3 className='m-tab-content-heading'>Meet Our Elite Team of Pickleball Pros</h3>
+      
+         
+            {/* <h3 className='m-tab-content-heading'>Meet Our Elite Team of Pickleball Pros</h3> */}
             <div className="mobile-layout">
               <InstructorShowcaseMobile instructorGroup={instructorsGroup}/>
             </div>
             <div className="desktop-layout">
               <InstructorShowcaseDesktop instructorGroup={instructorsGroup}/> 
             </div>
-          </Tab.Pane>
-          <Tab.Pane eventKey="leagues">
-            <h3>Leagues</h3>
-            <div>
-              <LeaguesMobile />
-            </div>
-          </Tab.Pane>
-          <Tab.Pane eventKey="programs">
-            <h3>Programs</h3>
-            <p>Content for Programs</p>
-          </Tab.Pane>
-        </Tab.Content>
-      </Tab.Container>
+        
+          
     </Container>
     
   );

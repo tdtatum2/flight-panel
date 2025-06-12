@@ -54,8 +54,8 @@ function InstructorShowcaseMobile({ instructorGroup }) {
         ))}
       </div>
       <div className="m-nav-buttons">
-        <Button variant='light' onClick={goBack}>←</Button>
-        <Button variant='light' onClick={goNext}>→</Button>
+        <Button variant='light' id='previousInstructor' onClick={goBack}>←</Button>
+        <Button variant='light' id='nextInstructor' onClick={goNext}>→</Button>
       </div>
     </Container>
       );
