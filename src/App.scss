@@ -1,3 +1,7 @@
+html {
+  background-color: transparent !important;
+}
+
 // RESPONSIVELY RENDER COMPONENTS BASED ON SCREEN SIZE
 @media (max-width: 768px) {
   .mobile-layout {display: block;}
