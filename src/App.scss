@@ -1,4 +1,4 @@
-html {
+html, body, #root {
   background-color: transparent !important;
 }
 
@@ -15,7 +15,7 @@ html {
 
 /* Main Container */
 .container-fluid {
-  background-color: transparent;
+  background-color: transparent !important;
   margin: 0;
   overflow-x: hidden;
 }
@@ -41,7 +41,7 @@ html {
 }
 
 .m-instructor-carousel-container {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 
 
@@ -159,7 +159,7 @@ html {
   margin: 1rem;
   width: 100%;
   position: relative;
-  background-color: transparent;
+  background-color: transparent !important;
   .d-instructor-wrapper {
     display: flex;
     justify-content: center;
