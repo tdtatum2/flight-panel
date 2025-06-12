@@ -51,7 +51,8 @@ button.btn-light {
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   width: 90%;
-  min-height: 95vh;
+  min-height: unset;
+  height: auto;
   ::-webkit-scrollbar {
     display: none;
   }
