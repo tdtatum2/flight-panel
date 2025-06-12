@@ -165,14 +165,14 @@ html, body, #root {
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 850px;
+    height: 800px;
     overflow: visible;
 
     .d-instructor-slide {
       position: absolute;
       top: 0;
       left: 50%;
-      width: 400px;
+      width: 325px;
       text-align: center;
       transform: translateX(-50%) scale(1);
       opacity: 0;
