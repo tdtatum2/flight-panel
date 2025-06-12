@@ -17,7 +17,7 @@ import InstructorShowcaseDesktop from './components/InstructorShowcaseDesktop';
     bookingLink: 'https://theflightclub.as.me/?appointmentType=category:Private%20Lesson%20%28Noi%29'
   },
   {
-    name: 'Fin Tatum',
+    name: 'Finn Tatum',
     shortName: 'Fin',
     title:'The Eclipse',
     quote: `Quiet as night. Dangerous as darkness.`,
