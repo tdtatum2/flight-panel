@@ -78,17 +78,12 @@ import InstructorShowcaseDesktop from './components/InstructorShowcaseDesktop';
 function App() {
   return (
     <Container fluid className="p-0">
-      
-         
-            {/* <h3 className='m-tab-content-heading'>Meet Our Elite Team of Pickleball Pros</h3> */}
-            <div className="mobile-layout">
-              <InstructorShowcaseMobile instructorGroup={instructorsGroup}/>
-            </div>
-            <div className="desktop-layout">
-              <InstructorShowcaseDesktop instructorGroup={instructorsGroup}/> 
-            </div>
-        
-          
+      <div className="mobile-layout">
+        <InstructorShowcaseMobile instructorGroup={instructorsGroup}/>
+      </div>
+      <div className="desktop-layout">
+        <InstructorShowcaseDesktop instructorGroup={instructorsGroup}/> 
+      </div> 
     </Container>
     
   );
