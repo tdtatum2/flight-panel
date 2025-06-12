@@ -11,24 +11,29 @@
 
 /* Main Container */
 .container-fluid {
-  background-color: #000;
+  background-color: transparent;
   margin: 0;
   overflow-x: hidden;
 }
 
-button.btn-light {
+
+// MOBILE INSTRUCTORS SHOWCASE
+#previousInstructor, #nextInstructor {
   position: absolute;
   top: 50%;
   border-radius: 50%;
   background-color: #fff !important;
   width: 3rem;
   aspect-ratio: 1/1;
-   &#previousInstructor {
-    left: 1rem;
-   }
-   &#nextInstructor {
-    right: 1rem;
-   }
+   
+}
+
+#previousInstructor {
+  left: 1rem;
+}
+
+#nextInstructor {
+  right: 1rem;
 }
 
 .m-instructor-carousel-container {
@@ -142,3 +147,190 @@ button.btn-light {
   }
 }
 
+
+
+// DESKTOP INSTRUCTORS SHOWCASE
+.d-instructor-carousel-container {
+  padding: 2rem 2rem 8rem 2rem;
+  margin: 1rem;
+  width: 100%;
+  position: relative;
+  background-color: transparent;
+  .d-instructor-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 850px;
+    overflow: visible;
+
+    .d-instructor-slide {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 400px;
+      text-align: center;
+      transform: translateX(-50%) scale(1);
+      opacity: 0;
+      filter: grayscale(100%);
+      background-color: #ffcd00;
+      border-radius: 1rem;
+      padding: 1rem;
+      transition:
+        transform 0.6s cubic-bezier(0.4,0,0.2,1),
+        opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+        filter 0.6s cubic-bezier(0.4,0,0.2,1);
+        z-index: 0s;
+
+      z-index: 1;
+      pointer-events: none;
+
+      &.active {
+        opacity: 1;
+        filter: grayscale(0%);
+        transform: translateX(-50%) scale(1.1);
+        z-index: 3;
+        pointer-events: auto;        
+      }
+
+      &.left {
+        opacity: 0.5;
+        filter: grayscale(100%);
+        transform: translateX(-170%) scale(0.9);
+        z-index: 2;
+      }
+
+      &.right {
+        opacity: 0.5;
+        filter: grayscale(100%);
+        transform: translateX(70%) scale(0.9);
+        z-index: 2;
+      }
+
+      &.incoming-right {
+        opacity: 0;
+        transform: translateX(200%) scale(0.9);
+        z-index: 1;
+      }
+
+      &.incoming-left {
+        opacity: 0;
+        transform: translateX(-200%) scale(0.9);
+        z-index: 1;
+      }
+
+      &.hidden {
+        opacity: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .d-carousel-scroll-item {
+        aspect-ratio: 281/409;
+        flex: 0 0 auto;
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin: auto;
+        background-image: var(--active-bg);
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .d-instructor-info-tray {
+        width: 100%;
+        color: #000;
+
+        // Name
+        h3 {
+          font-size: 1.5rem;
+          font-weight: 900;
+          margin: 0;
+          padding: 0;
+        }
+
+        // Title
+        h5 {
+          font-size: 1.2rem;
+          font-weight: 700;
+        }
+
+        // Quote
+        h6 {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        // Bio
+        p {
+          font-size: 0.9rem;
+          font-weight: 400;
+          margin: 0;
+          padding: 0;
+        }
+
+        .d-booking-button {
+          margin-top: 1rem;
+          background-color: #000;
+          font-weight: 600;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .d-nav-buttons {    
+    button {
+      background-color: #fff !important;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: #ffcd00 !important;
+      }
+    }
+
+    #d-previousInstructor, #d-nextInstructor {
+      position: absolute;
+      top: 50%;
+      z-index: 100;
+      // transform: translateY(-50%);
+    }
+
+    #d-previousInstructor {
+      left: 10%;
+    }
+
+    #d-nextInstructor {
+      right: 10%;
+    }
+
+    .d-instructor-indicators {
+      position: absolute;
+      bottom: 0rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 100;
+
+      .d-instructor-indicator {
+        width: 1rem;
+        height: 1rem;
+        border-radius: 50%;
+        background-color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        z-index: 100;
+        &.active {
+          background-color: #ffcd00;
+        }
+      }
+    }
+  }
+}
