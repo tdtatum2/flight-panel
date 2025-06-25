@@ -23,6 +23,11 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
     };
 
     sendHeight();
+
+    const interval = setInterval(sendHeight, 500);
+
+    setTimeout(() => clearInterval(interval), 3000);
+    
     }, []);
 
     return (
