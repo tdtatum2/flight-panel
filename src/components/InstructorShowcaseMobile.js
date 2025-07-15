@@ -8,7 +8,7 @@ import { EffectCards, Pagination } from 'swiper/modules';
 
 function InstructorShowcaseMobile({ instructorGroup }) {
   return (
-    <Container fluid className="m-instructor-carousel-container">
+    <Container fluid className="m-instructor-carousel-container" style={{ transform: 'scale(0.8)'}}>
       <Swiper
         effect="cards"
         grabCursor={true}
