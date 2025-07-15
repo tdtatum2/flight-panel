@@ -7,6 +7,16 @@ import { EffectCards, Pagination } from 'swiper/modules';
 // SwiperCore.use([EffectCards, Pagination]);
 
 function InstructorShowcaseMobile({ instructorGroup }) {
+  useEffect(() => {
+      const sendHeight = () => {
+          const height = document.documentElement.scrollHeight;
+          window.parent.postMessage({ type: 'setHeight', height }, '*');
+      };    
+  sendHeight();
+  const interval = setInterval(sendHeight, 500);
+  setTimeout(() => clearInterval(interval), 3000);
+  }, []);
+
   return (
     <Container fluid className="m-instructor-carousel-container" style={{ transform: 'scale(0.8)'}}>
       <Swiper
