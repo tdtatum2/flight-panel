@@ -6,10 +6,11 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
 
     useEffect(() => {
         const sendHeight = () => {
-            const height = document.body.scrollHeight;
+            const container = document.querySelector('.d-instructor-container');
+            const height = container ? container.getBoundingClientRect().height : document.body.scrollHeight;
             window.parent.postMessage({ type: 'setHeight', height }, '*');
         };    
-    sendHeight();
+    window.onload = sendHeight;
     const interval = setInterval(sendHeight, 500);
     setTimeout(() => clearInterval(interval), 3000);
     }, []);
