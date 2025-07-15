@@ -1,102 +1,83 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Button } from 'react-bootstrap';
+import { Container, Button, Row, Col } from 'react-bootstrap';
 
 function InstructorShowcaseDesktop( {instructorGroup} ){
     const [activeIndex, setActiveIndex] = useState(0);
-    const [direction, setDirection] = useState('right');
-
-
-    const goNext = () => {
-        setDirection('right');
-        setActiveIndex((prev) => (prev + 1) % instructorGroup.length);
-    };
-
-    const goBack = () => {
-        setDirection('left');
-        setActiveIndex((prev) => (prev - 1 + instructorGroup.length) % instructorGroup.length);
-    };
 
     useEffect(() => {
-    const sendHeight = () => {
-        const height = document.documentElement.scrollHeight;
-        window.parent.postMessage({ type: 'setHeight', height }, '*');
-    };
-
+        const sendHeight = () => {
+            const height = document.documentElement.scrollHeight;
+            window.parent.postMessage({ type: 'setHeight', height }, '*');
+        };    
     sendHeight();
-
     const interval = setInterval(sendHeight, 500);
-
     setTimeout(() => clearInterval(interval), 3000);
-    
     }, []);
 
+    const activeInstructor = instructorGroup[activeIndex];
+
     return (
-        <Container fluid className="d-instructor-carousel-container">
-            <div className="d-instructor-wrapper">
-                {instructorGroup.map((instructor, idx) => {
-                    let position = '';
-                    const n = instructorGroup.length;
-                    const leftIdx = (activeIndex - 1 + n) % n;
-                    const rightIdx = (activeIndex + 1) % n;
-
-                    if (idx === activeIndex) {
-                        position = 'active';
-                    } else if (idx === leftIdx) {
-                        position = 'left';
-                    } else if (idx === rightIdx) {
-                        position = 'right';
-                    } else if (
-                        direction === 'right' && idx === (activeIndex + 2) % n
-                    ) {
-                        position = 'incoming-right';
-                    } else if (
-                        direction === 'left' && idx === (activeIndex - 2 + n) % n
-                    ) {
-                        position = 'incoming-left';
-                    } else {
-                        position = 'hidden';
-                    }
-
-                    return (
-                    <div
-                        key={idx}
-                        className={`d-instructor-slide ${position}`}
-                    >
+        <Container fluid className="d-instructor-container">
+            <Row>
+                <Col md={2} className='d-instructor-thumbnails'>
+                    {instructorGroup.map((instructor, idx) => (
                         <div
-                        className={`d-carousel-scroll-item`}
-                        style={{
-                            '--default-bg': `url(${instructor.cardImage1})`,
-                            '--active-bg': `url(${instructor.cardImage2})`
-                        }}
+                            key={idx}
+                            id={instructor.shortName}
+                            onClick={() => setActiveIndex(idx)}
+                            style={{
+                                backgroundImage: `url(${instructor.cardImage2})`,
+                                filter: activeIndex === idx ? 'none' : 'grayscale(100%)',
+                                cursor: 'pointer',
+                                marginBottom: '1rem',
+                                border: activeIndex === idx ? '2px solid #fff' : '2px solid transparent',
+                                borderRadius: '8px',
+                                height: '125px',
+                                backgroundSize: 'cover',
+                                transition: 'filter 0.3s, border 0.3s'
+                            }}
+                            title={instructor.name}
                         />
-                        <div className='d-instructor-info-tray'>
-                        <h3>{instructor.name}</h3>
-                        <h5>{instructor.title}</h5>
-                        <h6><strong><em>"{instructor.quote}"</em></strong></h6>
-                        <p>{instructor.bio}</p>
-                        <span><strong>{instructor.booking}</strong></span>
-                        <br />
-                        <Button variant='dark' className='d-booking-button' target='_blank' href={instructor.bookingLink}>Book with {instructor.shortName}</Button>
-                        </div>
-                    </div>
-                    );
-                })}
-            </div>
-
-
-            <div className="d-nav-buttons">
-                <Button variant='light' id='d-previousInstructor' onClick={goBack}>←</Button>
-                <div className="d-instructor-indicators">
-                {instructorGroup.map((_, idx) => (
-                    <span
-                    key={idx}
-                    className={`d-instructor-indicator ${activeIndex === idx ? 'active' : ''}`}
-                    onClick={() => setActiveIndex(idx)}
-                    />
-                ))}
-                </div>
-                <Button variant='light' id='d-nextInstructor' onClick={goNext}>→</Button>
-            </div>
+                    ))}
+                </Col>
+                <Col md={5} className="d-instructor-info-panel">
+          <div className="d-instructor-info-tray">
+            <h3>{activeInstructor.name}</h3>
+            <h5>{activeInstructor.title}</h5>
+            <h6>
+              <strong>
+                <em>"{activeInstructor.quote}"</em>
+              </strong>
+            </h6>
+            <p>{activeInstructor.bio}</p>
+            <span>
+              <strong>{activeInstructor.booking}</strong>
+            </span>
+          </div>
+        </Col>
+        {/* Large Image */}
+        <Col md={5} className="d-instructor-image-panel">
+          <div
+            className="d-instructor-large-image"
+            style={
+                {backgroundImage: `url(${activeInstructor.cardImage2})`}
+            }
+          />
+        </Col>
+      </Row>
+      <Row>
+        <Col md={{ span: 10, offset: 2 }} className="d-instructor-booking-row">
+          <Button
+            variant="dark"
+            className="d-booking-button"
+            target="_blank"
+            href={activeInstructor.bookingLink}
+            block="true"
+          >
+            Book with {activeInstructor.shortName}
+          </Button>
+        </Col>
+            </Row> 
         </Container>
     );
 }

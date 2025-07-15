@@ -54,17 +54,10 @@ html, body, #root {
   justify-items: center;
   text-align: center;
   flex-wrap: nowrap;
-  overflow-x: auto;
   gap: 2rem;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
   width: 90%;
   min-height: unset;
   height: auto;
-  ::-webkit-scrollbar {
-    display: none;
-  }
   background-color: #ffcd00;
   border: 1px solid black;
   border-radius: 5px;
@@ -154,183 +147,77 @@ html, body, #root {
 
 
 // DESKTOP INSTRUCTORS SHOWCASE
-.d-instructor-carousel-container {
-  padding: 2rem 2rem 7rem 2rem;
-  margin: 1rem;
-  width: 100%;
-  position: relative;
-  background-color: transparent !important;
-  .d-instructor-wrapper {
+.d-instructor-container {
+  padding: 2rem;
+
+  #Noi {
+    background-position: 50% 15%;
+  }
+
+  #Fin {
+    background-position: 50% 10%;
+  }
+
+  #Lock {
+    background-position: 50% 10%;
+  }
+
+  #Jen {
+    background-position: 50% 10%;
+  }
+
+  #Matt {
+    background-position: 50% 22%;
+  }
+
+  #David {
+    background-position: 50% 5%;
+  }
+
+  .d-instructor-thumbnails {
+    display: flex;
+    flex-direction: column;    
+  }
+
+  .d-instructor-info-panel {
+    display: flex;
+    align-items: center;
+    .d-instructor-info-tray {
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+      background-color: #fffbe7;
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .d-instructor-large-image {
+    width: 100%;
+    height: 90%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 1rem;
+    margin: 0 auto;
+  }
+
+  .d-instructor-booking-row {
+    margin-top: -2rem;
     display: flex;
     justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 750px;
-    overflow: visible;
-
-    .d-instructor-slide {
-      position: absolute;
-      top: 0;
-      left: 50%;
-      width: 325px;
-      text-align: center;
-      transform: translateX(-50%) scale(1);
-      opacity: 1;
-      filter: grayscale(100%);
-      background-color: #ffcd00;
+    .d-booking-button {
+      width: 50%;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 0.7rem;
       border-radius: 1rem;
-      padding: 1rem;
-      transition:
-        transform 0.6s cubic-bezier(0.4,0,0.2,1),
-        filter 0.6s cubic-bezier(0.4,0,0.2,1);
-        z-index: 0s;
-
-      z-index: 1;
-      pointer-events: none;
-
-      &.active {
-        filter: grayscale(0%);
-        transform: translateX(-50%) scale(1.1);
-        z-index: 3;
-        pointer-events: auto;        
-      }
-
-      &.left {
-        filter: grayscale(100%);
-        transform: translateX(-170%) scale(0.9);
-        z-index: 2;
-      }
-
-      &.right {
-        filter: grayscale(100%);
-        transform: translateX(70%) scale(0.9);
-        z-index: 2;
-      }
-
-      &.incoming-right {
-        opacity: 0;
-        transform: translateX(200%) scale(0.9);
-        z-index: 1;
-      }
-
-      &.incoming-left {
-        opacity: 0;
-        transform: translateX(-200%) scale(0.9);
-        z-index: 1;
-      }
-
-      &.hidden {
-        opacity: 0;
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .d-carousel-scroll-item {
-        aspect-ratio: 281/409;
-        flex: 0 0 auto;
-        position: relative;
-        overflow: hidden;
-        width: 90%;
-        margin: auto;
-        background-image: var(--active-bg);
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-
-      .d-instructor-info-tray {
-        width: 100%;
-        color: #000;
-
-        // Name
-        h3 {
-          font-size: 1.5rem;
-          font-weight: 900;
-          margin: 0;
-          padding: 0;
-        }
-
-        // Title
-        h5 {
-          font-size: 1.2rem;
-          font-weight: 700;
-        }
-
-        // Quote
-        h6 {
-          font-size: 1rem;
-          font-weight: 500;
-        }
-
-        // Bio
-        p {
-          font-size: 0.9rem;
-          font-weight: 400;
-          margin: 0;
-          padding: 0;
-        }
-
-        .d-booking-button {
-          margin-top: 1rem;
-          background-color: #000;
-          font-weight: 600;
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .d-nav-buttons {    
-    button {
-      background-color: #fff !important;
-      border-radius: 50%;
-      width: 3rem;
-      height: 3rem;
+      background-color: #ffcd00;
+      color: #000;
       border: none;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #ffcd00 !important;
-      }
-    }
-
-    #d-previousInstructor, #d-nextInstructor {
-      position: absolute;
-      top: 50%;
-      z-index: 100;
-      // transform: translateY(-50%);
-    }
-
-    #d-previousInstructor {
-      left: 10%;
-    }
-
-    #d-nextInstructor {
-      right: 10%;
-    }
-
-    .d-instructor-indicators {
-      position: absolute;
-      bottom: 0rem;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 0.5rem;
-      z-index: 100;
-
-      .d-instructor-indicator {
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-        background-color: #fff;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        z-index: 100;
-        &.active {
-          background-color: #ffcd00;
-        }
-      }
     }
   }
+
 }

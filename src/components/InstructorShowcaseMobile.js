@@ -1,42 +1,26 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Container, Button } from 'react-bootstrap';
-import { useSwipeable } from 'react-swipeable';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-cards';
+import { EffectCards, Pagination } from 'swiper/modules';
+// SwiperCore.use([EffectCards, Pagination]);
 
 function InstructorShowcaseMobile({ instructorGroup }) {
-  const containerRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const goNext = () => {
-    setActiveIndex((prev) => (prev + 1) % instructorGroup.length);
-  };
-
-  const goBack = () => {
-    setActiveIndex((prev) => (prev - 1 + instructorGroup.length) % instructorGroup.length);
-  };
-
-  const swipeHandlers = useSwipeable({
-    onSwipedLeft: goNext,
-    onSwipedRight: goBack,
-    trackMouse: true
-  });
-
-  useEffect(() => {
-    const sendHeight = () => {
-      const height = document.documentElement.scrollHeight;
-      window.parent.postMessage({ type: 'setHeight', height }, '*');
-    };
-
-    sendHeight();
-  }, []);
-
   return (
-    <Container fluid className="m-instructor-carousel-container" {...swipeHandlers}>
-      <div className="m-instructor-wrapper">
+    <Container fluid className="m-instructor-carousel-container">
+      <Swiper
+        effect="cards"
+        grabCursor={true}
+        pagination={{ clickable: true }}
+        modules={[EffectCards, Pagination]}
+        className="m-instructor-swiper"
+        >
         {instructorGroup.map((instructor, idx) => (
-          idx === activeIndex && (
-            <div key={idx} className='m-instructor-slide'>
+          <SwiperSlide key={idx}>
+            <div className='m-instructor-slide'>
               <div
-              className={`m-carousel-scroll-item ${activeIndex === idx ? 'active' : ''}`}
+              className='m-carousel-scroll-item active'
               style={{'--default-bg': `url(${instructor.cardImage1})`, '--active-bg': `url(${instructor.cardImage2})`}}
               />
               <div className='m-instructor-info-tray'>
@@ -49,14 +33,9 @@ function InstructorShowcaseMobile({ instructorGroup }) {
                 <Button variant='dark' className='m-booking-button' target='_blank' href={instructor.bookingLink}>Book with {instructor.shortName}</Button>
               </div>
             </div>
-        )
-        
+          </SwiperSlide>        
         ))}
-      </div>
-      <div className="m-nav-buttons">
-        <Button variant='light' id='previousInstructor' onClick={goBack}>←</Button>
-        <Button variant='light' id='nextInstructor' onClick={goNext}>→</Button>
-      </div>
+      </Swiper>
     </Container>
       );
     };
