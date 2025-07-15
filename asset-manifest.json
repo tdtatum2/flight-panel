@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/flight-panel/static/css/main.f4bdd6fe.css",
-    "main.js": "/flight-panel/static/js/main.4648710f.js",
+    "main.css": "/flight-panel/static/css/main.5ac623fe.css",
+    "main.js": "/flight-panel/static/js/main.82e27ab3.js",
     "index.html": "/flight-panel/index.html",
-    "main.f4bdd6fe.css.map": "/flight-panel/static/css/main.f4bdd6fe.css.map",
-    "main.4648710f.js.map": "/flight-panel/static/js/main.4648710f.js.map"
+    "main.5ac623fe.css.map": "/flight-panel/static/css/main.5ac623fe.css.map",
+    "main.82e27ab3.js.map": "/flight-panel/static/js/main.82e27ab3.js.map"
   },
   "entrypoints": [
-    "static/css/main.f4bdd6fe.css",
-    "static/js/main.4648710f.js"
+    "static/css/main.5ac623fe.css",
+    "static/js/main.82e27ab3.js"
   ]
 }
