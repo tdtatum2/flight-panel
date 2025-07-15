@@ -6,7 +6,7 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
 
     useEffect(() => {
         const sendHeight = () => {
-            const height = document.documentElement.scrollHeight;
+            const height = document.body.scrollHeight;
             window.parent.postMessage({ type: 'setHeight', height }, '*');
         };    
     sendHeight();
