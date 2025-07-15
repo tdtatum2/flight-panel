@@ -17,9 +17,9 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
     const activeInstructor = instructorGroup[activeIndex];
 
     return (
-        <Container fluid className="d-instructor-container">
-            <Row>
-                <Col md={2} className='d-instructor-thumbnails'>
+        <Container fluid className="d-instructor-container" style={{ minHeight: '90vh', height: '80vh' }}>
+            <Row className="d-instructor-main-row" style={{ height: '100%' }}>
+                <Col md={2} className='d-instructor-thumbnails' style={{ height: '100%' }}>
                     {instructorGroup.map((instructor, idx) => (
                         <div
                             key={idx}
@@ -40,43 +40,44 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
                         />
                     ))}
                 </Col>
-                <Col md={5} className="d-instructor-info-panel">
-          <div className="d-instructor-info-tray">
-            <h3>{activeInstructor.name}</h3>
-            <h5>{activeInstructor.title}</h5>
-            <h6>
-              <strong>
-                <em>"{activeInstructor.quote}"</em>
-              </strong>
-            </h6>
-            <p>{activeInstructor.bio}</p>
-            <span>
-              <strong>{activeInstructor.booking}</strong>
-            </span>
-          </div>
-        </Col>
-        {/* Large Image */}
-        <Col md={5} className="d-instructor-image-panel">
-          <div
-            className="d-instructor-large-image"
-            style={
-                {backgroundImage: `url(${activeInstructor.cardImage2})`}
-            }
-          />
-        </Col>
-      </Row>
-      <Row>
-        <Col md={{ span: 10, offset: 2 }} className="d-instructor-booking-row">
-          <Button
-            variant="dark"
-            className="d-booking-button"
-            target="_blank"
-            href={activeInstructor.bookingLink}
-            block="true"
-          >
-            Book with {activeInstructor.shortName}
-          </Button>
-        </Col>
+                <Col md={10} className="d-instructor-content-col" style={{ height: '100%' }}>
+                    <div className="d-instructor-content-flex">
+                      <div className="d-instructor-header-row">The Flight Club 316 Team</div>
+                      <div className="d-instructor-info-panel">
+                        <div className="d-instructor-info-tray">
+                          <h3>{activeInstructor.name}</h3>
+                          <h5>{activeInstructor.title}</h5>
+                          <h6>
+                            <strong>
+                              <em>"{activeInstructor.quote}"</em>
+                            </strong>
+                          </h6>
+                          <p>{activeInstructor.bio}</p>
+                          <span>
+                            <strong>{activeInstructor.booking}</strong>
+                          </span>
+                        </div>
+                        <div className="d-instructor-image-panel">
+                          <div
+                            className='d-instructor-large-image'
+                            style={{
+                              backgroundImage: `url(${activeInstructor.cardImage2})`,}}
+                          />
+                        </div>
+                      </div>
+                      <div className="d-instructor-booking-row">
+                        <Button
+                          variant='dark'
+                          className='d-booking-button'
+                          target='_blank'
+                          href={activeInstructor.bookingLink}
+                          block='true'
+                        >
+                          Book with {activeInstructor.shortName}
+                        </Button>
+                      </div>
+                    </div>
+                </Col>
             </Row> 
         </Container>
     );
