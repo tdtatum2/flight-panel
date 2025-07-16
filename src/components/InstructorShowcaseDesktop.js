@@ -5,18 +5,32 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
     const [activeIndex, setActiveIndex] = useState(0);
 
     useEffect(() => {
-        const sendHeight = () => {
-            const container = document.querySelector('.d-instructor-container');
-            const row = document.querySelector('.d-instructor-main-row');
-            const height = container ? container.getBoundingClientRect().height : document.body.scrollHeight;
-            window.parent.postMessage({ type: 'setHeight', height }, '*');
-            console.log('Container height:', container?.getBoundingClientRect().height);
-            console.log('Row height:', row?.getBoundingClientRect().height);
-        };    
-    window.onload = sendHeight;
-    const interval = setInterval(sendHeight, 500);
-    setTimeout(() => clearInterval(interval), 3000);
-    }, []);
+      const container = document.querySelector('.d-instructor-container');
+        
+      const sendHeight = () => {
+        if (container) {
+        const height = container.getBoundingClientRect().height;
+        console.log('Container height:', height);
+        window.parent.postMessage({ type: 'setHeight', height }, '*');
+      }    
+    };
+
+    const resizeObserver = new ResizeObserver(() => {
+      sendHeight();
+    });
+
+    if(container) {
+      resizeObserver.observe(container);
+    }
+
+    return () => {
+      if(container) {
+        resizeObserver.unobserve(container);
+      }
+    };
+  }, []);
+
+    
 
     const activeInstructor = instructorGroup[activeIndex];
 
