@@ -149,7 +149,7 @@ html, body, #root {
 // DESKTOP INSTRUCTORS SHOWCASE
 .d-instructor-container {
   padding: 2rem;
-  height: 100%;
+  height: auto;
   min-height: 80vh;
 
   #Noi {
@@ -181,7 +181,7 @@ html, body, #root {
     min-height: 80vh;
     display: flex;
     align-items: stretch;
-    height: 100%;
+    height: auto;
   }
 
   .d-instructor-thumbnails {
@@ -202,7 +202,8 @@ html, body, #root {
   .d-instructor-content-col {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
+    // height: 100%;
     padding-left: 3rem;
   }
   
@@ -221,7 +222,7 @@ html, body, #root {
   .d-instructor-content-flex {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex: 1;
     justify-content: space-between;
   }
 
