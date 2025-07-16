@@ -21,7 +21,7 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
     const activeInstructor = instructorGroup[activeIndex];
 
     return (
-        <Container fluid className="d-instructor-container" style={{ minHeight: '90vh', height: '80vh' }}>
+        <Container fluid className="d-instructor-container" style={{ minHeight: '90vh', height: '80vh', paddingBottom: '1rem' }}>
             <Row className="d-instructor-main-row" style={{ height: '100%' }}>
                 <Col md={2} className='d-instructor-thumbnails' style={{ height: '100%' }}>
                     {instructorGroup.map((instructor, idx) => (
