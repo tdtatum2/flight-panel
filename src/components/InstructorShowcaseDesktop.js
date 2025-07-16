@@ -6,28 +6,38 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
 
     useEffect(() => {
       const container = document.querySelector('.d-instructor-container');
-        
+
+      let timeoutId;
+
       const sendHeight = () => {
         if (container) {
-        const height = container.scrollHeight;
-        console.log('Container height:', height);
-        window.parent.postMessage({ type: 'setHeight', height }, '*');
-      }    
-    };
-
-    const resizeObserver = new ResizeObserver(() => {
-      sendHeight();
-    });
-
-    if(container) {
-      resizeObserver.observe(container);
-    }
-
-    return () => {
-      if(container) {
-        resizeObserver.unobserve(container);
+          const height = container.scrollHeight; // Use scrollHeight for more accurate height
+          console.log('Height sent to parent:', height); // Debugging
+          window.parent.postMessage({ type: 'setHeight', height }, '*');
+        }
       }
-    };
+
+      const debouncedSendHeight = () => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          sendHeight();
+        }, 200);
+      }
+
+      const resizeObserver = new ResizeObserver(() => {
+        debouncedSendHeight();
+      })
+
+      if (container) {
+        resizeObserver.observe(container);
+      }
+
+      return () => {
+        clearTimeout(timeoutId);
+        if (container) {
+          resizeObserver.unobserve(container);
+        }
+      }    
   }, []);
 
     
