@@ -9,7 +9,7 @@ function InstructorShowcaseDesktop( {instructorGroup} ){
         
       const sendHeight = () => {
         if (container) {
-        const height = container.getBoundingClientRect().height;
+        const height = container.scrollHeight;
         console.log('Container height:', height);
         window.parent.postMessage({ type: 'setHeight', height }, '*');
       }    
